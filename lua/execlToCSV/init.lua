@@ -1,5 +1,13 @@
 local M = {}
 
+function M.setup(opts)
+	opts = opts or {}
+
+	vim.api.nvim_create_user_command("ExcelToCSV", function()
+		M.export_all_sheets()
+	end, {})
+end
+
 function M.export_all_sheets()
 	local file = vim.fn.expand("%:p")
 
